@@ -2,9 +2,10 @@ This document aims to draft my desired nvim config and log evolution:
 
 - Redo previous vim config - OK but things could be still missing
 - Install LSP - OK
-- Install DAP 
+- Install DAP - OK 
 - Install Formatter - OK (check if uncrustify and neoformat still needed ?)
 - Install Workspace tool - OK need to learn - https://github.com/natecraddock/workspaces.nvim 
+
 - Learn how to split lua configs in file to clean init.lua
 - Add plugin header for my files
 

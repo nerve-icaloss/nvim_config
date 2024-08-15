@@ -10,7 +10,11 @@ return {
     local widgets = require "dap.ui.widgets"
     local sidebar = widgets.sidebar(widgets.scopes)
 
-    dapui.setup()
+    dapui.setup({
+      render = {
+        max_type_length = 21,
+      },
+    })
 
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
@@ -22,9 +26,5 @@ return {
       dapui.close()
     end
 
-    map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "DAP Toggle breakpoint" })
-    map("n", "<leader>dt", function()
-      sidebar.toggle()
-    end, { desc = "DAP Toggle sidebar" })
   end,
 }

@@ -6,8 +6,11 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
-
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+-- Quit all opened buffers
+map("n", "<leader>Q", "<cmd>qa!<cr>", { silent = true, desc = "quit nvim" })
+
 
 map("n", "]t", function()
   require("todo-comments").jump_next()
@@ -22,3 +25,7 @@ end, { desc = "Previous todo comment" })
 map("n", "]t", function()
   require("todo-comments").jump_next { keywords = { "ERROR", "WARNING" } }
 end, { desc = "Next error/warning todo comment" })
+
+map("n", "<leader>dt", function()
+    require("dapui").close()
+end, { desc = "Toggle debugger ui"})

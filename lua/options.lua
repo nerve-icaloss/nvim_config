@@ -43,9 +43,9 @@ local opt = {
   textwidth = 0,
   wrapmargin = 0,
   -- Indentation values
-  tabstop = 2,
+  tabstop = 4,
   shiftwidth = 0, -- 0 forces same value as tabstop
-  softtabstop = 2,
+  softtabstop = 4,
   expandtab = true,
   autoindent = true,
   cursorline = true,
@@ -72,6 +72,7 @@ for k, v in pairs(opt) do
   vim.opt[k] = v
 end
 
+-- cmd use to highlight yank text
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('highlight_yank', {}),
   desc = 'Hightlight selection on yank',
@@ -79,4 +80,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
   end,
+})
+
+-- cmd use on nginx template file for config
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.template",
+  command = "set filetype=nginx"
 })
